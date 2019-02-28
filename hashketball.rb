@@ -219,4 +219,62 @@ rebound = 0
   rebound
 end
 
+def most_points_scored
+  points = 0 
+  player = "anon"
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |name, attributes|
+      if attributes[:points] > points
+        points = attributes[:points]
+        player = name 
+      end 
+    end 
+  end
+  player 
+end
 
+def winning_team
+  home_total = 0 
+  game_hash[:home][:players].each do |name, data|
+    home_total = home_total + data[:points] 
+  end
+  
+  away_total = 0
+  game_hash[:away][:players].each do |name, data|
+    away_total = away_total + data[:points] 
+  end 
+  
+  if home_total > away_total
+    game_hash[:home][:team_name]
+  else 
+    game_hash[:away][:team_name]
+  end 
+end 
+
+def player_with_longest_name
+  player_name_length = 0
+  player_name = 0
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |name, attributes|
+      if name.length > player_name_length
+        player_name_length = name.length
+        player_name = name 
+      end 
+    end 
+  end
+  player_name 
+end
+
+def long_name_steals_a_ton?
+  steals = 0
+  player_name = "anon"
+  
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |name, attributes|
+      if attributes[:steals] > steals
+        player_name = name
+      end 
+    end 
+  end
+  return true if player_name == player_with_longest_name 
+end 
