@@ -141,6 +141,8 @@ def num_points_scored(name) #takes argument of a players name and returns the nu
   end
 end
 
+num_points_scored("Brendon Haywood")
+
 def shoe_size(name) #takes name as argument and returns the shoe size
 	game_hash.each do |teams_playing, data| 
 		data.each do |attribute, value| 
@@ -155,15 +157,17 @@ end
 
 shoe_size("Brendon Haywood")
 
-def team_colors(team, game) #takes in an argument of the team name and returns an array of that teams colors.
-	game.each do |k, v|
-		if k == :team_names
-			return team[:colors]
+def team_colors(team) #takes in an argument of the team name and returns an array of that teams colors.
+	game_hash.each do |teams_playing, data|
+		data.each do |attribute, value| 
+			if attribute == :colors
+				return game_hash[teams_playing][:colors]
+			end 
 		end 
-	end
-end
+	end 
+end 
 
-team_colors("Charlotte Hornets",game)
+team_colors("Brooklyn Nets")
 
 def team_names #operates on the hash to to return an array of team names
 	array = []
@@ -209,3 +213,5 @@ def player_stats(name) #takes argument of player name and returns hash of player
     end
   end
 end
+
+player_stats("Brendon Haywood")
