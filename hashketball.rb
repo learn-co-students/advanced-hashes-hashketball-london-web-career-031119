@@ -1,4 +1,4 @@
-ddef game_hash 
+def game_hash 
 	game_hash = {
 		:home => 
 		{
@@ -129,14 +129,33 @@ ddef game_hash
 }
 end 
 
-def num_points_scored
-end
 
+def num_points_scored(name) #takes argument of a players name and returns the number of points
+  hash = game_hash
+  hash.each do |teams_playing, data| 
+    data.each do |attribute, value| 
+      if value.include?(name) 
+       return hash[location][attribute][name][:points]
+      end
+    end
+  end
+end
 
 def shoe_size(name) #takes name as argument and returns the shoe size
+	game_hash.each do |teams_playing, data| 
+		data.each do |attribute, value| 
+			if attribute == :players
+				value.each do |player_data| 
+					return game_hash[teams_playing][attribute][player_data][:shoe_size]
+				end 
+			end 
+		end 
+	end 
 end
 
-def team_colors(team, game)
+shoe_size("Brendon Haywood")
+
+def team_colors(team, game) #takes in an argument of the team name and returns an array of that teams colors.
 	game.each do |k, v|
 		if k == :team_names
 			return team[:colors]
@@ -167,7 +186,26 @@ def player_numbers(teamname) #takes argument of the team name and returns an arr
 		data.each do |attributes, values|
 			values.each do |player_number, player_data|
 				if player_data == :number
+					array.push(player_number)
+				end 
+			end 
+		end 
+	end 
 end 
 
+
+player_numbers("Charlotte Hornets")
+
+
+
+
 def player_stats(name) #takes argument of player name and returns hash of players stats
-end 
+  hash = game_hash
+  hash.each do |location, attributes| 
+    attributes.each do |attribute, info| 
+      if info.include?(name) 
+       return hash[location][attribute][name]
+      end
+    end
+  end
+end
