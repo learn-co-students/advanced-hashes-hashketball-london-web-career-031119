@@ -145,8 +145,8 @@ def shoe_size(name) #takes name as argument and returns the shoe size
 	game_hash.each do |teams_playing, data| 
 		data.each do |attribute, value| 
 			if attribute == :players
-				value.each do |player_data| 
-					return game_hash[teams_playing][attribute][player_data][:shoe_size]
+				value.each do |player_number, player_data| 
+					return game_hash[teams_playing][attribute][player_number][:shoe_size]
 				end 
 			end 
 		end 
