@@ -171,3 +171,33 @@ def team_colors(team_name)
   colors.compact
   colors[0]
 end
+
+def team_names
+  names = []
+  game_hash.collect do |team, details|
+    details.collect do |key, value|
+      if key == :team_name
+        names << value
+      end
+    end
+  end
+  names
+end
+
+def player_numbers(team_name)
+  numbers = []
+  game_hash.collect do |team, specs|
+    specs.collect do |key, value|
+      if value == team_name
+        specs.collect do |specs, values|
+          if specs == :players
+            values.collect do |player, stats|
+              numbers << stats[:number]
+            end
+          end
+        end
+      end
+    end
+  end
+  numbers
+end
