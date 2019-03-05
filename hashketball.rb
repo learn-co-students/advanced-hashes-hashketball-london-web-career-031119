@@ -137,24 +137,26 @@ end
 
 # good_practices
 def num_points_scored(score)
- result = []
-game_hash.each do |one, two|
+ result = []   # create new result array
+game_hash.each do |one, two| #iterate into hash
   if two[:players].include?(score)
-  result << two[:players][score][:points]
+  result << two[:players][score][:points]    #if while iterating through hash it finds the name, then shovel matching score into array
  # p game_hash[:home][:players]["Alan Anderson"][:points]
 #
 # if team_data[:players] = match
 # p data[team_data][:players]
 end
 end
-result.join.to_i
+result.join.to_i # use method chain to change result array to string and then to integer
 end
+
+
 # p num_points_scored("Ben Gordon")
 def shoe_size(name)
-  result = []
-  game_hash.each do |one, two|
+  result = []      # new array
+  game_hash.each do |one, two|   #iterate through hash
   if two[:players].include?(name)
-  result << two[:players][name][:shoe]
+  result << two[:players][name][:shoe]      #if while iterating through hash it finds the name, then shovel matching shoe size into array
  # p game_hash[:home][:players]["Alan Anderson"][:points]
 #
 # if team_data[:players] = match
@@ -165,10 +167,10 @@ result.join.to_i
 end
 
 def player_numbers(team)
-  result = []
+  result = []    #new array
   game_hash.each do |one, two|
     if two[:team_name].include?(team)
-      two[:players].each do |three, four|
+      two[:players].each do |three, four| #iterate through hash, when it finds team name then iterate further to get all corresponding player numbers and shovel those into array
       result << four[:number]
 end
 end
@@ -180,14 +182,14 @@ end
 
 
 def team_colors(name)
-result = []
+result = []      #new array
 game_hash.each do |one, two|
-if two[:team_name].include?(name)
+if two[:team_name].include?(name)  #iterate through hash, when it finds team name, shovel team colors into result array
 result << two[:colors]
 
 end
 end
-result.flatten
+result.flatten #use .flatten method to change multiple arrays in result to single array
 end
 # p result
 
@@ -196,7 +198,7 @@ end
 def player_stats(name)
   result = []
  game_hash.each do |one, two|
-   if two[:players].include?(name)
+   if two[:players].include?(name)    #iterate through hash, when find name, take hash or players stats and assign it to result
 result = two[:players][name]
   # p game_hash[:home][:players]["Alan Anderson"][:points]
  #
@@ -213,20 +215,20 @@ end
 def team_names
   name = []
 game_hash.each do |one, two|
-  name << two[:team_name]
+  name << two[:team_name]      #iterate through hash and shovel team names into name array
 end
-name
+name #output name array
 end
 
 def big_shoe_rebounds
 result = []
-big = 0
- shoes = ""
+big = 0   #create variable to store/compare shoe sizes
+ shoes = "" #create variable to store name largest shoe size
 game_hash.each do |one, two|
   two[:players].each do |name, stats|
-  if stats[:shoe] > big
-    big = stats[:shoe]
-    shoes = name
+  if stats[:shoe] > big     # iterate though hash. because big starts at 0, first iteration takes first shoe size and places it into big variable.
+    big = stats[:shoe]      #goes through hash and if shoe size is larger than the last highest shoe size then it places name into shoes variable
+    shoes = name            #returns result of shoes variable which will be the name of the player with biggest shoe size
 end
 end
 
