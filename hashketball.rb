@@ -223,12 +223,12 @@ end
 def big_shoe_rebounds
 result = []
 big = 0   #create variable to store/compare shoe sizes
- shoes = "" #create variable to store name largest shoe size
+ shoes = "" #create variable to store rebounds largest shoe size
 game_hash.each do |one, two|
   two[:players].each do |name, stats|
   if stats[:shoe] > big     # iterate though hash. because big starts at 0, first iteration takes first shoe size and places it into big variable.
-    big = stats[:shoe]      #goes through hash and if shoe size is larger than the last highest shoe size then it places name into shoes variable
-    shoes = name            #returns result of shoes variable which will be the name of the player with biggest shoe size
+    big = stats[:shoe]      #goes through hash and if shoe size is larger than the last highest shoe size then it places rebounds into shoes variable
+    shoes = name            #returns result of shoes variable which will be the rebounds of the player with biggest shoe size
 end
 end
 
