@@ -118,6 +118,21 @@ def game_hash
 end
 
 def num_points_scored(name)
+
+  points = []
+  all_players = game_hash[:home][:players].merge(game_hash[:away][:players])
+
+  all_players.collect do |player, stats|
+    if name.to_sym == player
+      points << all_players[player][:points]
+      points[0]
+    end
+  end
+  points.compact
+end
+
+=begin First, I had done it through nested iterations
+
   array =[]
   game_hash.collect do |team, specs|
     specs.collect do |specs, values|
@@ -138,7 +153,23 @@ def num_points_scored(name)
   #tried array[0] and it didn't work
 end
 
+=end
+
 def shoe_size(name)
+
+  shoe = []
+  all_players = game_hash[:home][:players].merge(game_hash[:away][:players])
+
+  all_players.collect do |player, stats|
+    if name.to_sym == player
+      shoe << all_players[player][:shoe]
+    end
+  end
+  shoe.compact
+end
+
+
+=begin First, I had done it through nested iterations.
   array =[]
   game_hash.collect do |team, specs|
     specs.collect do |specs, values|
@@ -158,6 +189,8 @@ def shoe_size(name)
   array
   #tried array[0] and it didn't work
 end
+
+=end
 
 def team_colors(team_name)
   colors = []
@@ -203,7 +236,19 @@ def player_numbers(team_name)
 end
 
 def player_stats(name)
-  stats = []
+  player_stats = []
+  all_players = game_hash[:home][:players].merge(game_hash[:away][:players])
+  all_players.collect do |player, stats|
+    if player.to_s == name
+      player_stats << stats
+    end
+  end
+  player_stats.compact
+end
+
+=begin This is how I had tried to build the method at first, through nested iterations.
+
+stats = []
   game_hash.collect do |team, specs|
     specs.collect do |key, value|
       if key == :players
@@ -218,4 +263,12 @@ def player_stats(name)
     end
   end
   stats
+end
+
+=end
+
+def big_shoe_rebounds
+  all_players = game_hash[:home][:players].merge(game_hash[:away][:players])
+    player_biggest_shoe = all_players.max_by {|key, value| value.fetch(:shoe)}[0]
+    all_players[player_biggest_shoe][:rebounds]
 end
