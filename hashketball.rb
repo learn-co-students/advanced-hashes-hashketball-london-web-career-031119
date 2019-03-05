@@ -201,3 +201,22 @@ def player_numbers(team_name)
   end
   numbers
 end
+
+def player_stats(name)
+  stats = []
+  game_hash.collect do |team, specs|
+    specs.collect do |key, value|
+      if key == :players
+        value.collect do |player, data|
+          if player.to_s == name
+          stats <<  data
+          else
+            array = []
+          end
+        end
+      end
+    end
+  end
+  binding.pry
+  stats[0]
+end
