@@ -1,0 +1,30 @@
+
+[1mFrom:[0m /home/breezy-program-4123/advanced-hashes-hashketball-london-web-career-031119/hashketball.rb @ line 160 Object#player_numbers:
+
+    [1;34m146[0m: [32mdef[0m [1;34mplayer_numbers[0m (team_names) [1;34m#1[0m
+    [1;34m147[0m:   game_hash.collect [32mdo[0m |team,data| [1;34m#2[0m
+    [1;34m148[0m:     binding.pry
+    [1;34m149[0m:     data.each [32mdo[0m |general,stats|[1;34m#3[0m
+    [1;34m150[0m:       binding.pry
+    [1;34m151[0m:       [32mif[0m stats.include?(team_names) [1;34m#this works 4[0m
+    [1;34m152[0m:     binding.pry
+    [1;34m153[0m:     data.each [32mdo[0m |general_2,stats_2| [1;34m#5[0m
+    [1;34m154[0m:       binding.pry
+    [1;34m155[0m:       [32mif[0m general_2 == [33m:players[0m [1;34m#6[0m
+    [1;34m156[0m:         binding.pry
+    [1;34m157[0m:         stats_2.each [32mdo[0m |name,info| [1;34m#7[0m
+    [1;34m158[0m:           binding.pry
+    [1;34m159[0m:         info.each [32mdo[0m |stati,figure| [1;34m#8[0m
+ => [1;34m160[0m:           binding.pry
+    [1;34m161[0m:           [32mif[0m stati == [33m:points[0m
+    [1;34m162[0m:           binding.pry
+    [1;34m163[0m:         [32mend[0m
+    [1;34m164[0m:         [32mend[0m [1;34m#8[0m
+    [1;34m165[0m:         [32mend[0m[1;34m#7[0m
+    [1;34m166[0m:       [32mend[0m [1;34m#6[0m
+    [1;34m167[0m:     [32mend[0m [1;34m#5[0m
+    [1;34m168[0m:       [32mend[0m [1;34m#4[0m
+    [1;34m169[0m:     [32mend[0m [1;34m#3[0m
+    [1;34m170[0m:   [32mend[0m [1;34m#2[0m
+    [1;34m171[0m: [32mend[0m [1;34m#1[0m
+
