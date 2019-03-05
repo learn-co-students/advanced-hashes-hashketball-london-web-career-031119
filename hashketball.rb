@@ -232,12 +232,12 @@ game_hash.each do |one, two|
 end
 end
 
-game_hash.each do |x, y|
-if y[:players].include?(shoes)
- result << y[:players][shoes][:rebounds]
-end
-end
-
-end
-result[0]
-end
+# game_hash.each do |x, y|
+# if y[:players].include?(shoes)
+#  result << y[:players][shoes][:rebounds]
+# end
+# end
+#
+# end
+# result[0]
+# end
