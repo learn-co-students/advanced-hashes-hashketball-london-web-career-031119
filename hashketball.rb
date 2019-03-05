@@ -237,5 +237,5 @@ if y[:players].include?(shoes)
 end
 end
 end
-result[0] #ouputs first result of rebound array
+result[0] #ouputs first result of result array
 end
